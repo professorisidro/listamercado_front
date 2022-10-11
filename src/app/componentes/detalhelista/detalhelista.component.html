@@ -1,0 +1,82 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12 text-center">
+            <h3> {{ listaCompras.nomeMercado }}</h3>
+        </div>
+    </div>
+
+    <div class="row titulo">
+        <div class="col-12">
+            Data da Compra: {{listaCompras.data}}    Valor Total R$  {{listaCompras.valorTotal}}
+        </div>
+    </div>
+    <div class="row mt-2">
+        <div class="col-12">
+            <button type="button" class="btn btn-primary" (click)="exibirModal()">Adicionar Item</button>
+        </div>
+    </div>
+
+    <!-- repeticao dos itens da lista -->
+    <div class="row" *ngFor="let ITEM of listaCompras.itens">
+        <div class="row">
+          <div class="col-7">
+            {{ITEM.produto.nome}} 
+          </div>
+          <div class="col-2">
+            {{ITEM.quantidade}}
+          </div>
+          <div class="col-2">
+            {{ITEM.precoTotal | currency }}
+          </div>
+          <div class="col-1">
+            <input type="checkbox" class="form-check">
+          </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- modal para novo item da lista e novo produto -->
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" id="btnModal" style="visibility: hidden;" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Launch demo modal
+  </button>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal"   tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Adicionar Item da lista</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <!-- formulario do produto e item/quantidade opcionais -->
+          <label for="selectProduto">Selecione o Produto</label>
+          <select class="form-select" [(ngModel)]="novoItem.produto.id">
+            <option *ngFor="let PROD of listaProdutos" [value]=[PROD.id]>
+                {{PROD.nome}}
+            </option>
+          </select>
+
+          
+
+
+          <p>*Não encontrou? <button class="btn btn-primary" (click)="habilitarNovoProduto()"> Criar</button></p>
+          <div *ngIf="formNovoProduto">
+                <label for="txtNovoProduto">Nome</label>
+                <input type="text" class="form-control" [(ngModel)]="novoProduto.nome"> <button class="btn btn-primary" (click)="cadastrarNovoProduto();"> Ok</button>
+          </div>
+
+          <label for="txtQuantidade">Quantidade (opcional)</label>
+          <input type="number" id="txtQuantidade" class="form-control" [(ngModel)]="novoItem.quantidade">
+          <label for="txtPreco">Preço a ser pago(opcional)</label>
+          <input type="number" id="txtPreco" class="form-control" [(ngModel)]="novoItem.precoTotal" >
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-primary"  data-bs-dismiss="modal" (click)="adicionarItemLista()">Adicionar</button>
+        </div>
+      </div>
+    </div>
+  </div>
