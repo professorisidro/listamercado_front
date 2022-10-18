@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  urlAPI: "http://lista.professorisidro.com.br:8080"
+  urlAPI: "https://cloud.professorisidro.com.br:8443"
 };

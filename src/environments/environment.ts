@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  urlAPI: "http://lista.professorisidro.com.br:8080"
+  urlAPI: "https://cloud.professorisidro.com.br:8443"
 };
 
 /*
