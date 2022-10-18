@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  urlAPI: "http://localhost:8080"
+  urlAPI: "http://lista.professorisidro.com.br:8080"
 };
 
 /*
