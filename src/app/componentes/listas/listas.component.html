@@ -6,8 +6,9 @@
     </div>
     <hr />
     <div class="row lista" *ngFor="let ITEM of listas">
-        <div class="col-4"> {{ ITEM.data }} </div>
-        <div class="col-8"> <a [routerLink]="['/detalhe',ITEM.id]"> {{ ITEM.nomeMercado }} R$ {{ ITEM.valorTotal }} </a> </div>
+        <div class="col-3"> {{ ITEM.data | date: 'dd/MM/yyyy'}} </div>
+        <div class="col-7"> <a [routerLink]="['/detalhe',ITEM.id]"> {{ ITEM.nomeMercado }} </a> </div>
+        <div class="col-2"> {{ ITEM.valorTotal | currency  }} </div>
     </div>
 </div>
 

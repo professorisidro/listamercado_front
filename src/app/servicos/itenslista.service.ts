@@ -14,4 +14,11 @@ export class ItenslistaService {
   public adicionarNovoItem(item: ItemLista): Observable<ItemLista>{
     return this.http.post<ItemLista>(environment.urlAPI+"/itemlista", item);
   }
+  public removerItem(idItem: number): Observable<string>{
+    return this.http.delete<string>(environment.urlAPI+"/itemlista/"+idItem);
+  }
+
+  public alterarItem(item: ItemLista): Observable<ItemLista>{
+    return this.http.put<ItemLista>(environment.urlAPI+"/itemlista/"+item.numSeq, item);
+  }
 }

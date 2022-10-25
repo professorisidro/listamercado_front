@@ -1,3 +1,14 @@
 .titulo{
     border-bottom: 1px solid gray;
 }
+
+a, a:link, a:visited, a:active, a:hover {
+    text-decoration: none;
+    color: black;
+}
+.pendente{
+    text-decoration: none;
+}
+.concluido{
+    text-decoration: line-through;
+}
